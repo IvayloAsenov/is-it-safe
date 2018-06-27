@@ -1,12 +1,19 @@
-var express = require('express');
-var bodyParser = require('body-parser');
+const express = require('express');
+const bodyParser = require('body-parser');
+const {getSubtitles} = require('youtube-captions-scraper');
 
 var app = express();
 const port = process.env.PORT || 3000;
 
 app.get('/video/:videoId', (req, res) => {
-  var videoId = req.params.videoId;
-  res.status(200).send(`the video id is ${videoId}`);
+  var videoID = req.params.videoId;
+
+  getSubtitles({
+    videoID, // youtube video id
+  }).then(captions => {
+      console.log(captions);
+      res.status(200).send(`${captions}`);
+  });
 });
 
 app.listen(port, () => {

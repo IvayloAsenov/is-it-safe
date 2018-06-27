@@ -1,0 +1,14 @@
+chain of events:
+
+user enters youtube link
+verify if video exists
+
+get captions list from video (new class)
+using a caption from the list, download it 
+
+using an api verify for bad words
+get a score
+
+get the name of the video using youtube api
+
+return Name and Score
