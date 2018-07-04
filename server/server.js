@@ -3,16 +3,20 @@ const bodyParser = require('body-parser');
 const {getSubtitles} = require('youtube-captions-scraper');
 
 var app = express();
+app.use(bodyParser.json());
+
 const port = process.env.PORT || 3000;
 
-app.get('/video/:videoId', (req, res) => {
-  var videoID = req.params.videoId;
+app.post('/video', (req, res) => {
+  var videoID = req.body.videoID;
 
   getSubtitles({
     videoID, // youtube video id
   }).then(captions => {
-      console.log(captions);
-      res.status(200).send(`${captions}`);
+      //console.log(captions);
+      var jsonCaptions = JSON.stringify(captions);
+
+      res.status(200).send(`${jsonCaptions}`);
   });
 });
 
