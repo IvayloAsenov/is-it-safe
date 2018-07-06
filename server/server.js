@@ -17,11 +17,12 @@ app.post('/video', (req, res) => {
       var captionString = JSON.stringify(captions);
       var captionObject = JSON.parse(captionString);
 
+      var videoText;
       captionObject.forEach(function(k) {
-          console.log(k['text']);
+          videoText += k['text'];
       });
 
-
+      console.log(videoText);
       res.status(200).send("this is a very nice send method!");
   });
 });
