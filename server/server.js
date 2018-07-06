@@ -13,10 +13,16 @@ app.post('/video', (req, res) => {
   getSubtitles({
     videoID, // youtube video id
   }).then(captions => {
-      //console.log(captions);
-      var jsonCaptions = JSON.stringify(captions);
 
-      res.status(200).send(`${jsonCaptions}`);
+      var captionString = JSON.stringify(captions);
+      var captionObject = JSON.parse(captionString);
+
+      captionObject.forEach(function(k) {
+          console.log(k['text']);
+      });
+
+
+      res.status(200).send("this is a very nice send method!");
   });
 });
 
