@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const {getSubtitles} = require('youtube-captions-scraper');
 
+var {Video} = require('./models/video');
+
 var app = express();
 app.use(bodyParser.json());
 
@@ -20,9 +22,12 @@ app.post('/video', (req, res) => {
       var videoText;
       captionObject.forEach(function(k) {
           videoText += k['text'];
+          videoText += " "; // add space
       });
 
-      console.log(videoText);
+      var video = new Video(videoText, videoID);
+
+      console.log(video.text);
       res.status(200).send("this is a very nice send method!");
   });
 });
