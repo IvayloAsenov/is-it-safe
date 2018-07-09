@@ -25,6 +25,7 @@ app.post('/video', (req, res) => {
           videoText += " "; // add space
       });
 
+      videoText = videoText.toLowerCase();
       var video = new Video(videoText, videoID);
 
       var score = video.score;
