@@ -27,7 +27,9 @@ app.post('/video', (req, res) => {
 
       var video = new Video(videoText, videoID);
 
-      console.log(video.text);
+      var score = video.score;
+      console.log(video.score);
+
       res.status(200).send("this is a very nice send method!");
   });
 });
