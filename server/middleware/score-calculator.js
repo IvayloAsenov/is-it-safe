@@ -6,15 +6,16 @@ var Score = function (text) {
   var textArray = text.split(" ");
   var wordCounter = 0;
 
-  console.log(textArray.length);
-
   textArray.forEach(function(k){
     if(Words.includes(k)) {
       console.log(k);
+      wordCounter++;
     }
   });
 
-  return 0.5; // for now just return a 0.5 value
+  var score = wordCounter / textArray.length * 10 * 2;
+
+  return score; // for now just return a 0.5 value
 }
 
 module.exports = Score;

@@ -30,7 +30,7 @@ app.post('/video', (req, res) => {
       var video = new Video(videoText, videoID);
       var score = Score(videoText);
 
-      res.status(200).send(videoText);
+      res.status(200).send(`The score is ${score}`);
   });
 });
 
