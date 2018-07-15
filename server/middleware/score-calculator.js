@@ -15,7 +15,7 @@ var Score = function (text) {
 
   var score = wordCounter / textArray.length * 10 * 2;
 
-  return score; // for now just return a 0.5 value
+  return score;
 }
 
 module.exports = Score;
