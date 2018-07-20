@@ -1,3 +1,5 @@
+require('./config/config')
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const {getSubtitles} = require('youtube-captions-scraper');
@@ -34,7 +36,6 @@ app.post('/video', (req, res) => {
       });
 
       videoText = videoText.toLowerCase();
-      var video = new Video(videoText, videoID);
       var score = Score(videoText);
 
       res.status(200).send(`The score is ${score}`);
@@ -43,10 +44,18 @@ app.post('/video', (req, res) => {
                         + " If you want to manually add a score for this video. Hit /add-score"
                         + " endpoint with videoID and score in the body");
   });
+
+  // if not found in getSubtitles, check in database?
 });
 
-add.post('/add-score',  (req, res) => {
+add.post('/add/video',  (req, res) => {
+  var video = new Video({
+    id: req.body.id,
+    name: req.body.name,
+    score: req.body.score
+  });
 
+  // Save to database
 });
 
 app.listen(port, () => {
