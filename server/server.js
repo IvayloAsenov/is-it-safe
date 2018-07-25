@@ -11,6 +11,7 @@ var Score = require('./middleware/score-calculator');
 var app = express();
 app.use(bodyParser.json());
 
+// Deploying to heroku
 const port = process.env.PORT || 3000;
 
 app.post('/video', (req, res) => {
